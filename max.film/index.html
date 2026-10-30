@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090d">
+    <title>Max Film | Enter the Cinema</title>
+    <link rel="stylesheet" href="film.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="#" class="logo">
+            <div class="logo-icon">M</div>
+            <span>MAX<span class="yellow">FILM</span></span>
+        </a>
+
+        <div class="nav-actions">
+            <select id="language" class="language-select" aria-label="Language">
+                <option value="en">EN</option>
+                <option value="uz">UZ</option>
+                <option value="ru">RU</option>
+            </select>
+
+            <button class="auth-btn login" data-auth="login">Log In</button>
+            <button class="auth-btn signup" data-auth="signup">Sign Up</button>
+
+            <button id="menuBtn" class="menu-btn"
+                    aria-label="Open filters" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <aside id="filterPanel" class="filter-panel">
+        <div class="panel-heading">
+            <div>
+                <p class="eyebrow">DISCOVER YOUR NEXT MOVIE</p>
+                <h2>Movie <span class="yellow">Filters</span></h2>
+            </div>
+            <button id="closeBtn" class="close-btn" aria-label="Close filters">×</button>
+        </div>
+
+        <label for="searchInput">Search movie</label>
+        <input id="searchInput" type="search" placeholder="Movie name...">
+
+        <div class="filter-grid">
+            <div>
+                <label for="country">Country</label>
+                <select id="country">
+                    <option value="">All countries</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="year">Release year</label>
+                <select id="year">
+                    <option value="">All years</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="genre">Genre</label>
+                <select id="genre">
+                    <option value="">All genres</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="movieLanguage">Movie language</label>
+                <select id="movieLanguage">
+                    <option value="">All languages</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="rating">Minimum rating</label>
+                <select id="rating">
+                    <option value="">Any rating</option>
+                    <option value="5">5+ / 10</option>
+                    <option value="6">6+ / 10</option>
+                    <option value="7">7+ / 10</option>
+                    <option value="8">8+ / 10</option>
+                    <option value="9">9+ / 10</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="sort">Sort by</label>
+                <select id="sort">
+                    <option value="popular">Popularity</option>
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                    <option value="rating">Highest rating</option>
+                    <option value="title">Title A–Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="filter-buttons">
+            <button id="resetBtn" class="reset-btn">Reset</button>
+            <button id="applyBtn" class="apply-btn">Apply Filters ↗</button>
+        </div>
+        <p class="filter-note">Filters are ready to connect to a movie database.</p>
+    </aside>
+
+    <div id="overlay" class="overlay"></div>
+
+    <main>
+        <section class="hero">
+            <div class="scanline"></div>
+            <div class="hero-content">
+                <p class="eyebrow"><span class="live-dot"></span> YOUR NEXT OBSESSION STARTS HERE</p>
+                <h1 id="welcomeTitle">WELCOME TO<br><span>MAX FILM</span></h1>
+                <p id="heroDescription">
+                    Enter a world of stories. Discover movies beyond imagination.
+                </p>
+
+                <div class="hero-buttons">
+                    <button id="exploreBtn" class="apply-btn">EXPLORE MOVIES ↗</button>
+                    <button id="heroFilterBtn" class="outline-btn">⌘ FILTER MOVIES</button>
+                </div>
+
+                <div class="hero-stats">
+                    <div><strong>01</strong><span>DISCOVER</span></div>
+                    <div><strong>02</strong><span>EXPLORE</span></div>
+                    <div><strong>03</strong><span>ENJOY</span></div>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="core">MF<span>+</span></div>
+                <div class="art-label">CINEMA / FUTURE</div>
+                <div class="art-number">2077</div>
+            </div>
+
+            <div class="corner corner-tl"></div>
+            <div class="corner corner-br"></div>
+        </section>
+
+        <section id="results" class="results">
+            <div>
+                <p class="eyebrow">YOUR CINEMA UNIVERSE</p>
+                <h2>Find your next <span class="yellow">favorite.</span></h2>
+                <p class="results-description">
+                    Choose your filters and build your perfect movie night.
+                </p>
+            </div>
+            <div id="activeFilters" class="active-filters">ALL MOVIES</div>
+            <div id="movieResults" class="movie-results">
+                <div class="empty-state">
+                    <span class="empty-icon">✳</span>
+                    <h3>YOUR STORY STARTS HERE</h3>
+                    <p>Connect a movie API to display real films and search results.</p>
+                    <button id="emptyFilterBtn" class="outline-btn">OPEN FILTERS</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="logo footer-logo">MAX<span class="yellow">FILM</span></a>
+        <p>© 2026 MAX FILM — YOUR WORLD. YOUR MOVIES.</p>
+        <span class="footer-status"><span class="live-dot"></span> SYSTEM ONLINE</span>
+    </footer>
+
+    <dialog id="authDialog" class="auth-dialog">
+        <button id="authClose" class="close-btn dialog-close" aria-label="Close">×</button>
+        <p class="eyebrow">WELCOME BACK, CINEPHILE</p>
+        <h2 id="authTitle">LOG <span class="yellow">IN</span></h2>
+
+        <form id="authForm">
+            <label for="authEmail">Email</label>
+            <input id="authEmail" type="email" placeholder="you@example.com" required>
+
+            <label for="authPassword">Password</label>
+            <input id="authPassword" type="password" minlength="8"
+                   placeholder="At least 8 characters" required>
+
+            <button id="authSubmit" class="apply-btn auth-submit" type="submit">LOG IN ↗</button>
+        </form>
+        <p id="authMessage" class="auth-message">Demo interface — authentication is not connected yet.</p>
+    </dialog>
+
+    <script src="film.js"></script>
+</body>
+</html>
